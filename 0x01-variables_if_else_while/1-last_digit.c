@@ -1,36 +1,23 @@
 #include <stdlib.h>
-
 #include <time.h>
-
-/*
- *This program will assign a random number to the variable n each time it is executed.
- *
- *
- * */
+#include <stdio.h>
+/**
+ * main - main function takes no arguments
+ * Return: Returns 0 when program stops
+ */
 int main(void)
-
 {
+	int n;
+	int num;
 
-int n;
-srand(time(0));
-
-n = rand() - RAND_MAX / 2;
-
-/* your code goes there */
-printf("Last digit of %d is " ,n)
-if (n > 5)
-{
-	printf("is greater than 5");
-}
-if ( n == 0)
-{
-	printf("0");
-}
-if (n < 6 && n! = 0)
-{
-	printf("less than 6 and not 0");
-}
-print("\n");
-return (0);
-
+	srand(time(0));
+	n = rand() - RAND_MAX / 2;
+	num = n % 10;
+	if (num > 5)
+		printf("Last digit of %d is %d and is greater than 5\n", n, num);
+	if (num == 0)
+		printf("Last digit of %d is %d and is 0\n", n, num);
+	if ((num < 6) && (num != 0))
+		printf("Last digit of %d is %d and is less than 6 and not 0\n", n, num);
+	return (0);
 }

@@ -16,23 +16,9 @@ int main(void)
 
 {
 
-	char ch;
+	int ch;
 
-	int n;
-
-
-
-	for (n = 48; n <= 57; n++)
-
-	{
-
-
-
-		putchar(n);
-
-	}
-
-	for (ch = 'a'; ch <= 'f'; ch++)
+	for (ch = 48; ch <= 57; ch++)
 
 	{
 
@@ -40,11 +26,21 @@ int main(void)
 
 		putchar(ch);
 
+		if (ch != 57)
+
+		{
+
+			putchar(44);
+
+			putchar(32);
+
+		}
+
 	}
 
 
 
-	putchar(10);
+	putchar(10); /* this is an ascii code for new line*/
 
 
 

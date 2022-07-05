@@ -1,17 +1,14 @@
 #include "main.h"
-
 /**
- *  main - check the code
- *
- *  Return: Always 0
+ * print_alphabet - Prints alphabets a to z
  */
-void print_alphabet(void);
+void print_alphabet(void)
 {
 	char ch;
 
-	for (ch = "a"; ch <= "z";  ch++)
+	for (ch = 'a'; ch <= 'z'; ch++)
 	{
-		putchar(ch);
+		_putchar(ch);
 	}
-	return (0);
+	_putchar('\n');
 }

@@ -1,34 +1,41 @@
 #include "main.h"
-/**
- * times_table - Entry point
- * Description: prints the 9 times table, starting with 0.
- */
-void times_table(void)
-{
-	int x, y, k;
 
-	for (x = 0; x < 10; x++)
+/**
+ * jack_bauer - Entry point
+ * Description: prints every minute of the day of Jack Bauer.
+ */
+void jack_bauer(void)
+{
+	int i, j;
+
+	for (i = 0; i < 24; i++)
 	{
-		for (y = 0; y < 10; y++)
+		for (j = 0; j < 60; j++)
 		{
-			k = x * y;
-			if (y == 0)
-				_putchar(k + '0');
-			if (y != 0 && k < 10)
+			if (i < 10)
 			{
-				_putchar(',');
-				_putchar(' ');
-				_putchar(' ');
-				_putchar(k + '0');
+				_putchar('0');
+				_putchar(i + '0');
 			}
-			else if (k >= 10)
+			else if (i >= 10)
 			{
-				_putchar(',');
-				_putchar(' ');
-				_putchar((k / 10) + '0');
-				_putchar((k % 10) + '0');
+				_putchar((i / 10) + '0');
+				_putchar((i % 10) + '0');
 			}
+			if (j < 10)
+			{
+				_putchar(':');
+				_putchar('0');
+				_putchar(j + '0');
+			}
+			else if (j >= 10)
+			{
+				_putchar(':');
+				_putchar((j / 10) + '0');
+				_putchar((j % 10) + '0');
+			}
+			_putchar('\n');
 		}
-		_putchar('\n');
+
 	}
 }

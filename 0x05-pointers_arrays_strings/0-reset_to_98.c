@@ -1,8 +1,8 @@
 #include "main.h"
 /**
-* main - a function that takes a pointer to an int 
+*main - a function that takes a pointer to an int 
 * 
-* Return: 0
+*Return: 0
 */
 void reset_to_98(int *n)
 {

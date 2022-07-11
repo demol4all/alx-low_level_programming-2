@@ -20,8 +20,4 @@ char *_strcpy(char *dest, char *src)
 
 	return (dest);
 }
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
 

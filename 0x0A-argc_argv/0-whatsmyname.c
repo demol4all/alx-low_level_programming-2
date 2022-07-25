@@ -1,15 +1,14 @@
 #include <stdio.h>
+
 /**
-* main - prints program name
-* @argc: number of programs in the command line.
-* @argv: stores number of arguments passed in the command line.
-*
-* Return: 0 on sucess
-*/
+ * main -> program that prints its name, followed by a new line.
+ * @argc: offset count
+ * @argv: offset value
+ * Return: 0
+ */
+
 int main(int argc, char *argv[])
 {
-	(void)argc;
-
-	printf("%s\n", argv[0]);
+	printf("%s\n", argv[argc - 1]);
 	return (0);
 }

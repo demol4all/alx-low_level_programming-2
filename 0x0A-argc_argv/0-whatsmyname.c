@@ -1,14 +1,13 @@
 #include <stdio.h>
 
 /**
- * main -> program that prints its name, followed by a new line.
- * @argc: offset count
- * @argv: offset value
- * Return: 0
- */
-
-int main(int argc, char *argv[])
+* main -> this is a function to print its name
+* @argc: argc parameter
+* @argv: an array of a command listed
+* Return: 0 for success
+*/
+int main(int argc __attribute__((unused)), char *argv[])
 {
-	printf("%s\n", argv[argc - 1]);
+	printf("%s\n", *argv);
 	return (0);
 }

@@ -1,30 +1,51 @@
-#include "variadic_functions.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdarg.h>
-
+#include "variadic_functions.h"
 /**
- * print_strings - prints strings then new line
- * @separator: string printed between strings
- * @n: number of strings passed
- */
-
-void print_strings(const char *separator, const unsigned int n, ...)
+* print_all - prints anything except everything :-)
+* @format: list of various arguments passed to fctn.
+*
+* Return: VOID.
+*/
+void print_all(const char * const format, ...)
 {
-	va_list arg;
-	char *str;
 	unsigned int i;
+	va_list args;
+	char *s, *separator;
 
-	va_start(arg, n);
+	va_start(args, format);
 
-	for (i = 0; i < n; i++)
+	separator = "";
+
+	i = 0;
+	while (format[i])
 	{
-		str = va_arg(arg, char *);
-		printf("%s", str != NULL ? str : "(nil)");
-		if (i < (n - 1) && separator != NULL)
+		switch (format[i])
 		{
-			printf("%s", separator);
+			case 'c':
+				printf("%s%c", separator, va_arg(args, int));
+				break;
+			case 'i':
+				printf("%s%d", separator, va_arg(args, int));
+				break;
+			case 'f':
+				printf("%s%f", separator, va_args(args, double));
+				break;
+			case 's':
+				s = va_arg(args, char *);
+				if (s == NULL)
+					s = "(nil)";
+				printf("%s%s", separator, s);
+				break;
+			default:
+				i++;
+				continue;
 		}
+		separator = ", ";
+		i++;
 	}
+
 	printf("\n");
-	va_end(arg);
+	va_end(args);
 }

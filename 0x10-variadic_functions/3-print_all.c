@@ -1,51 +1,101 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
 #include "variadic_functions.h"
+
+#include <stdarg.h>
+
+#include <stdio.h>
+
+
+
 /**
-* print_all - prints anything except everything :-)
-* @format: list of various arguments passed to fctn.
-*
-* Return: VOID.
-*/
+ *
+ *  * print_all - Variadic function that can print any argument passed in
+ *
+ *   * as long as it is a character, integer, float, or string
+ *
+ *    * @format: The data type being passed into the function
+ *
+ *     * Return: Nothing
+ *
+ *      */
+
 void print_all(const char * const format, ...)
+
 {
-	unsigned int i;
-	va_list args;
-	char *s, *separator;
 
-	va_start(args, format);
+		int i = 0;
 
-	separator = "";
+			va_list argument_input;
 
-	i = 0;
-	while (format[i])
-	{
-		switch (format[i])
-		{
-			case 'c':
-				printf("%s%c", separator, va_arg(args, int));
-				break;
-			case 'i':
-				printf("%s%d", separator, va_arg(args, int));
-				break;
-			case 'f':
-				printf("%s%f", separator, va_args(args, double));
-				break;
-			case 's':
-				s = va_arg(args, char *);
-				if (s == NULL)
-					s = "(nil)";
-				printf("%s%s", separator, s);
-				break;
-			default:
-				i++;
-				continue;
-		}
-		separator = ", ";
-		i++;
-	}
+				char *str = "(nil)";
 
-	printf("\n");
-	va_end(args);
+					char *sarray = NULL;
+
+						char *separator = ", ";
+
+
+
+							va_start(argument_input, format);
+
+
+
+								while (format[i] != '\0' && format != NULL)
+
+										{
+
+													switch (format[i])
+
+																{
+
+																				case 'c':
+
+																									printf("%c", va_arg(argument_input, int));
+
+																													break;
+
+																																case 'i':
+
+																																	printf("%d", va_arg(argument_input, int));
+
+																																					break;
+
+																																								case 'f':
+
+																																									printf("%f", va_arg(argument_input, double));
+
+																																													break;
+
+																																																case 's':
+
+																																																	sarray = va_arg(argument_input, char *);
+
+																																																					if (sarray == NULL)
+
+																																																											sarray = str;
+
+																																																									printf("%s", sarray);
+
+																																																													break;
+
+																																																																default:
+
+																																																																	i++;
+
+																																																																					continue;
+
+																																																																							}
+
+															if ((format[i + 1] != '\0') && (format[i] == 'c' || format[i] == 'i' ||
+
+																							format[i] == 'f' || format[i] == 's'))
+
+																			printf("%s", separator);
+
+																	i++;
+
+																		}
+
+									printf("\n");
+
+										va_end(argument_input);
+
 }

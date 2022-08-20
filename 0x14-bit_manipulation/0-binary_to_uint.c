@@ -1,77 +1,30 @@
 #include "main.h"
-/**
-  * _strlen - retirns length of a string.
-  * @s: pointer to string.
-  *
-  * Return: string length
-  */
-unsigned int _strlen(const char *s)
-{
-	/* i is a counter/looping var */
-	unsigned int i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
 
 /**
-  * getp - return value of x to the power of y.
-  * @x: integerr
-  * @y: power
-  *
-  * Return: x to the power of y.
-  * 0 if x is less than 0.
-  */
-int getp(int x, int y)
-{
-	if (y < 0)
-		return (0);
-	if (y == 0)
-		return (1);
-	if (y == 1)
-		return (x);
+ * binary_to_uint - convert binary to unsigned int
+ * @b: pointing to string of 0 and 1 chars
+ * Return: converted number or 0
+ */
 
-	return (x * getp(x, y - 1));
-}
-
-/**
-  * binary_to_uint - converts binary numbr to unsigned int.
-  * @b: pointer to string containing input binary.
-  *
-  * Return: converted number or 0 if b is NULL
-  * or if b is not in binary format.
-  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int num, length, index;
-	int power;
+	unsigned int dec = 0;
 
-	length = _strlen(b);
-	power = 0;
-	num = 0;
-	index = length - 1; /* null byte terminator exclusion */
-
-	if (length && b)
+	if (b == NULL)
 	{
-		while (length && b)
-		{
-			if (b[index] == 48 || b[index] == 49)
-			{
-				num = num + ((b[index] - 48) * getp(2, power));
-				power++;
-				index--;
-				length--;
-			}
-			else
-			{
-				return (0);
-			}
-		}
-		return (num);
+		return (0);
 	}
-	return (0);
+
+	while (*b != '\0')
+	{
+		if (!(*b == '0' || *b == '1'))
+		{
+			return (0);
+		}
+		else
+		{
+			dec = 2 * dec + (*b++ - '0');
+		}
+	}
+	return (dec);
 }
